@@ -67,5 +67,17 @@ public class Contact {
 	public void setTelMobile(Integer telMobile) {
 		this.telMobile = telMobile;
 	}
+	public Entreprise getEntreprise() {
+		return entreprise;
+	}
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
+	public List<Echange> getEchanges() {
+		return echanges;
+	}
+	public void setEchanges(List<Echange> echanges) {
+		this.echanges = echanges;
+	}
 	
 }

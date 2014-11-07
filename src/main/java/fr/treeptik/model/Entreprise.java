@@ -19,4 +19,38 @@ public class Entreprise {
 	private String secteurActivite;
 	@OneToMany(mappedBy="entreprise")
     private List<Contact> contacts;
+	public Entreprise() {
+		super();
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getRaisonSociale() {
+		return raisonSociale;
+	}
+	public void setRaisonSociale(String raisonSociale) {
+		this.raisonSociale = raisonSociale;
+	}
+	public String getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	public String getSecteurActivite() {
+		return secteurActivite;
+	}
+	public void setSecteurActivite(String secteurActivite) {
+		this.secteurActivite = secteurActivite;
+	}
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
+	}
+	
 }

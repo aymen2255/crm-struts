@@ -3,10 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>CRM_spring_struts</groupId>
 	<artifactId>CRM_spring_struts</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>CRM_spring_struts</name>
 	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -17,8 +24,21 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<username>tomcat</username>
+					<password>tomcat</password>
+					<path>/crm</path>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</build>
+
 	<dependencies>
 
 		<dependency>
@@ -90,4 +110,44 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<database.user>root</database.user>
+				<database.password>root</database.password>
+				<database.url>jdbc:mysql://localhost:3306/crm_spring_struts</database.url>
+			</properties>
+			<build>
+				<finalName>crm-dev-${project.version}</finalName>
+			</build>
+		</profile>
+
+
+		<profile>
+			<id>integration</id>
+
+			<properties>
+				<database.user>root</database.user>
+				<database.password>root</database.password>
+				<database.url>jdbc:mysql://localhost:3306/crmIntegration</database.url>
+			</properties>
+			<build>
+				<finalName>crm-integration-${project.version}</finalName>
+			</build>
+		</profile>
+	</profiles>
+
+
+
+
+
+
+
+
+
+
 </project>
